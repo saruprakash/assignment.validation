@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login Form</title>
+    <style>
+        label{
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        #storeBtn{
+            margin-left: 105px;
+        }
+    </style>
+    <script>
+       function setData(){
+           localStorage.age = document.getElementById("ip_uage").value;
+           localStorage.email = document.getElementById("ip_uemail").value;
+           localStorage.phone = document.getElementById("ip_uphone").value;
+       }
+       function getData(){
+           document.getElementById("uage").innerText = localStorage.age;
+           document.getElementById("uemail").innerText = localStorage.email;
+           document.getElementById("uphone").innerText = localStorage.phone;
+       }
+       //-------------------------------------------------------------------------
+       function getLSLength(){
+           document.getElementById("log").innerText = "there are "+localStorage.length+" items stored";
+       }
+       function getLSItem(){
+          document.getElementById("log").innerText = "age's value is "+localStorage.getItem("age");
+       }
+       function setLSItem(){
+         // localStorage.setItem("age","30");
+          document.getElementById("log").innerText = "age is updated";
+        }
+        function removeLSage(){
+          localStorage.removeItem("age");
+          document.getElementById("log").innerText = "age is removed";
+       }
+       function clearLS(){
+          localStorage.clear();
+          document.getElementById("log").innerText = "user info removed";
+       }
+       function getLSAt2(){
+         // document.getElementById("log").innerText = "value at key 2 is "+localStorage.key(2);
+          document.getElementById("log").innerText = "key 2's age is "+ localStorage.key(2)+" value is "+localStorage.getItem(localStorage.key(2));
+       }
+    </script>
+</head>
+<body>
+    <h2>Store User Info</h2>
+    <div>
+        <label for="ip_uage">User age</label>
+        <input id="ip_uage" type="text">
+        <button id="storeBtn" onclick="setData()"> Store User Info </button>
+    </div>
+    <div>
+        <label for="ip_uemail">User email</label>
+        <input id="ip_uemail" type="text">
+        <button id="storeBtn" onclick="setData()"> Store User Info </button>
+    </div>
+    <div>
+        <label for="ip_uphone">User phone</label>
+        <input id="ip_uphone" type="text">
+        <button id="storeBtn" onclick="setData()"> Store User Info </button>
+    </div>
+    <hr>
+    <h2>Get User Info</h2>
+    <ul>
+        <li>User age  : <span id="uage"></span></li>
+        <li>User email  : <span id="uemail"></span></li>
+        <li>User phone :  <span id="uphone"></span></li>
+    </ul>
+    <button onclick="getData()">Get User Data</button>
+    <hr>
+    <button onclick="getLSLength()">Get Length</button>
+    <button onclick="getLSItem()">Get Item value of age</button>
+    <button onclick="setLSItem()">Set Item value for age</button>
+    <button onclick="removeLSage()">Remove Item age</button>
+    <button onclick="clearLS()">Clear</button>
+    <button onclick="getLSAt2()">Get Item at 2nd key</button>
+    <hr>
+    <h1 id="log"></h1>
+</body>
+</html>
